@@ -1,0 +1,52 @@
+/* ***********************************************
+          DISEÑO DE BOTONES PERSONALIZADOS
+************************************************ */
+.btn {
+  @apply inline-flex items-center justify-center font-medium transition-all duration-200 ease-in-out
+         select-none cursor-pointer px-4 py-2 rounded-md gap-2;
+  user-select: none;
+  border: none;
+}
+
+/* Hover y efecto click */
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Boton activo */
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Enfoque accesible
+.btn:focus-visible {
+  outline: 2px solid theme('colors.sky.600');
+} */
+
+/* Botones deshabilitados */
+.btn:disabled,
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+/* Bordes cuadrados */
+.btn-square {
+  @apply rounded-none;
+}
+
+/* Bordes grandes y suaves */
+.btn-rounded {
+  @apply rounded-full;
+}
+
+/* Tamaños */
+.btn-sm {
+  @apply text-sm px-3 py-1.5;
+}
+
+.btn-lg {
+  @apply text-lg px-6 py-3;
+}
