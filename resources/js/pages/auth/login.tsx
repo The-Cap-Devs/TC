@@ -88,7 +88,7 @@ export default function Login({
 
                             <Button
                                 type="submit"
-                                className="btn btn-square bg-sky-600 text-white hover:bg-sky-700 focus:ring-4 focus:ring-sky-300 dark:focus:ring-sky-800 w-full"
+                                className="btn bg-sky-600 text-white hover:bg-sky-700 focus:ring-4 focus:ring-sky-300 dark:focus:ring-sky-800 w-full"
                                 tabIndex={4}
                                 disabled={processing}
                                 data-test="login-button"

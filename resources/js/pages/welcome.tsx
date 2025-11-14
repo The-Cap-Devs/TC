@@ -2,36 +2,60 @@ import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
 import HeroSection from '@/components/welcome/hero-section';
+import StatsSection from '@/components/welcome/stats';
 import WelcomeHeader from "@/components/welcome/header";
+import CategoriesSection from "@/components/welcome/categories-section";
+import Accordion from '@/components/welcome/faq';
+import HowToQuoteSection from '@/components/welcome/how-to';
+import "../../css/animations/welcome-bg.css";
+
+
 
 
 
 export default function Welcome({
-    canRegister = true,
+  canRegister = true,
 }: {
-    canRegister?: boolean;
+  canRegister?: boolean;
 }) {
-    const { auth } = usePage<SharedData>().props;
+  const { auth } = usePage<SharedData>().props;
 
-    return (
-        <>
-            <Head title="Welcome">
-                <link rel="preconnect" href="https://fonts.bunny.net" />
-                <link
-                    href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
-                    rel="stylesheet"
-                />
-            </Head>
-            <div className="flex  flex-col items-center bg-[#FDFDFC] text-[#1b1b18] lg:justify-center dark:bg-[#0a0a0a]">
-                
-                <WelcomeHeader canRegister={canRegister} />
-                
-                    <main className="w-full">
-                        <HeroSection />
-                    </main>
+  return (
+    <>
+      <Head title="Welcome">
+        <link rel="preconnect" href="https://fonts.bunny.net" />
+        <link
+          href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
+          rel="stylesheet"
+        />
+      </Head>
 
-                <div className="hidden h-14.5 lg:block"></div>
-            </div>
-        </>
-    );
+      {/* --- Fondo animado global --- */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="bg"></div>
+        <div className="bg bg2"></div>
+        <div className="bg bg3"></div>
+      </div>
+
+      {/* --- Contenido principal --- */}
+        <div className="flex flex-col items-center bg-transparent text-[#1b1b18] lg:justify-center dark:bg-transparent">
+            <WelcomeHeader canRegister={canRegister} />
+
+            <main className="w-full">
+                <HeroSection />
+                <StatsSection />
+
+                <div className="container flex mx-auto px-4 mt-20">
+                    <CategoriesSection />
+                </div>
+
+                <HowToQuoteSection />
+
+                <Accordion />
+            </main>
+
+            <div className="hidden h-14.5 lg:block"></div>
+        </div>
+    </>
+  );
 }

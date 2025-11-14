@@ -12,7 +12,7 @@ export default function HeroSection() {
 
       {/* Contenido principal */}
       <div className="relative z-10 px-6 lg:px-16 text-center max-w-5xl animate-fadeIn">
-        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 leading-tight">
           SOMOS MAYORISTAS
         </h1>
 
@@ -22,19 +22,19 @@ export default function HeroSection() {
           bronce, tenemos todo para tus proyectos.
         </p>
 
-        <div className="flex flex-wrap gap-3 justify-center">
-          <Link
+        <div className="flex justify-center items-center">
+          {/* <Link
             href="/catalog"
             className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-all duration-200 shadow-md hover:shadow-lg"
           >
-            <i className="bi bi-grid-3x3-gap mr-1" /> Ver Catálogo
-          </Link>
+            <i className="bi bi-grid-3x3-gap mr-1" /> VER CATÁLOGO
+          </Link> */}
 
           <Link
             href="/quotes/new"
             className="bg-transparent border border-white hover:bg-white hover:text-black font-semibold px-5 py-2 rounded-md text-sm transition-all duration-200"
           >
-            <i className="bi bi-file-earmark-text mr-1" /> Solicitar Cotización
+            <i className="bi bi-file-earmark-text mr-1" /> VER CATÁLOGO
           </Link>
         </div>
       </div>
