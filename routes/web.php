@@ -16,4 +16,29 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 });
 
+// --- Catálogo de productos ---
+// Route::get('products', function () {
+//     return Inertia::render('products'); 
+// })->name('products');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('products', function () {
+        return Inertia::render('products');
+    })->name('products');
+});
+
+// --- Carrito de compras ---
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('cart', function () {
+        return Inertia::render('cart');
+    })->name('cart');
+});
+
+
+// --- Cotizaciones ---
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('quotations', function () {
+        return Inertia::render('quotations');
+    })->name('quotations');
+});
 require __DIR__.'/settings.php';

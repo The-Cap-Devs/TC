@@ -1,17 +1,17 @@
 import { Link } from "@inertiajs/react";
-import { Search, FilePlus2, CheckCircle2 } from "lucide-react";
+import { Search, FilePlus2, CheckCircle2, UserRoundPen } from "lucide-react";
 
 export default function HowToQuoteSection() {
     return (
         <section className="how-it-works py-20">
-            <div className="w-full max-w-7xl mx-auto px-6">
+            <div className="w-full ">
                 
                 {/* Títulos */}
-                <div className="mb-16 text-right">
-                    <h2 className="font-bold text-4xl md:text-5xl inline-block relative">
+                <div className="mb-16 text-center md:text-left">
+                    <h2 className="relative inline-block text-3xl md:text-5xl font-black text-gray-900 dark:text-gray-100 after:content-[''] after:block after:w-90 after:h-1 after:bg-sky-600 after:mx-auto after:mt-2">
                         ¿Sabes cómo realizar tu cotización?
                     </h2>
-                    <p className="text-base md:text-lg mt-2 text-gray-600 dark:text-gray-300">
+                    <p className="mt-4 text-gray-600 dark:text-gray-300 text-base md:text-lg">
                         Automatiza tu proceso de compra de tornillería en solo unos minutos.
                     </p>
                 </div>
@@ -23,21 +23,21 @@ export default function HowToQuoteSection() {
                     <div className="w-full">
                         <div className="step-card bg-white dark:bg-neutral-900 p-8 rounded-xl shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
                             <div className="text-center">
-                                <div className="step-icon-wrapper mx-auto mb-6 flex items-center justify-center w-24 h-24 rounded-full bg-blue-100 text-blue-600 text-4xl transition-all duration-300">
-                                    <Search size={45} />
+                                <div className="step-icon-wrapper mx-auto mb-6 flex items-center justify-center w-24 h-24 rounded-full bg-blue-100 text-sky-600 text-4xl transition-all duration-300">
+                                    <UserRoundPen size={45} />
                                 </div>
 
-                                <h3 className="text-xl font-bold mb-3">1. Explora y Encuentra</h3>
+                                <h3 className="text-xl font-bold mb-3">1. Regístrate como cliente</h3>
                                 <p className="text-gray-600 dark:text-gray-300">
-                                    Navega por nuestro extenso catálogo de tornillos, tuercas y accesorios. 
-                                    Utiliza los filtros para encontrar el producto exacto que necesitas.
+                                    Ve a la pestaña de registro y crea tu cuenta de cliente para acceder a 
+                                    nuestro catálogo completo de productos.
                                 </p>
 
                                 <Link 
-                                    href="/catalog"
-                                    className="inline-block mt-5 px-5 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
+                                    href="/register"
+                                    className="inline-block mt-5 px-5 py-2 rounded-lg bg-sky-600 text-white font-medium hover:bg-sky-700 transition"
                                 >
-                                    Explorar catálogo
+                                    Regístrate Ahora
                                 </Link>
                             </div>
                         </div>
@@ -47,21 +47,21 @@ export default function HowToQuoteSection() {
                     <div className="w-full">
                         <div className="step-card bg-white dark:bg-neutral-900 p-8 rounded-xl shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
                             <div className="text-center">
-                                <div className="step-icon-wrapper mx-auto mb-6 flex items-center justify-center w-24 h-24 rounded-full bg-blue-100 text-blue-600 text-4xl transition-all duration-300">
+                                <div className="step-icon-wrapper mx-auto mb-6 flex items-center justify-center w-24 h-24 rounded-full bg-blue-100 text-sky-600 text-4xl transition-all duration-300">
                                     <FilePlus2 size={45} />
                                 </div>
 
-                                <h3 className="text-xl font-bold mb-3">2. Prepara tu Solicitud</h3>
+                                <h3 className="text-xl font-bold mb-3">2. Explora nuestro catálogo</h3>
                                 <p className="text-gray-600 dark:text-gray-300">
-                                    Añade los productos y las cantidades deseadas a tu lista de cotización. 
-                                    Revisa los detalles y haz ajustes si es necesario.
+                                    Navega por nuestras categorías de productos y añade los artículos que 
+                                    necesitas a tu carrito de cotización.
                                 </p>
 
                                 <Link 
                                     href="/cart"
-                                    className="inline-block mt-5 px-5 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
+                                    className="inline-block mt-5 px-5 py-2 rounded-lg bg-sky-600 text-white font-medium hover:bg-sky-700 transition"
                                 >
-                                    Revisar carrito
+                                    Explorar Catálogo
                                 </Link>
                             </div>
                         </div>
@@ -71,7 +71,7 @@ export default function HowToQuoteSection() {
                     <div className="w-full">
                         <div className="step-card bg-white dark:bg-neutral-900 p-8 rounded-xl shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
                             <div className="text-center">
-                                <div className="step-icon-wrapper mx-auto mb-6 flex items-center justify-center w-24 h-24 rounded-full bg-blue-100 text-blue-600 text-4xl transition-all duration-300">
+                                <div className="step-icon-wrapper mx-auto mb-6 flex items-center justify-center w-24 h-24 rounded-full bg-blue-100 text-sky-600 text-4xl transition-all duration-300">
                                     <CheckCircle2 size={45} />
                                 </div>
 
@@ -83,7 +83,7 @@ export default function HowToQuoteSection() {
 
                                 <Link 
                                     href="/quotes/new"
-                                    className="inline-block mt-5 px-5 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
+                                    className="inline-block mt-5 px-5 py-2 rounded-lg bg-sky-600 text-white font-medium hover:bg-sky-700 transition"
                                 >
                                     Enviar Cotización
                                 </Link>

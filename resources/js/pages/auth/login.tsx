@@ -9,13 +9,40 @@ import AuthLayout from '@/layouts/auth-layout';
 import { register } from '@/routes';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
-import { Form, Head } from '@inertiajs/react';
+import { Form, Head, Link } from '@inertiajs/react';
+import React from 'react';
 
 interface LoginProps {
     status?: string;
     canResetPassword: boolean;
     canRegister: boolean;
 }
+
+
+interface AnimatedLinkProps extends Omit<React.ComponentProps<typeof Link>, 'href'> {
+  href: any;
+  children: React.ReactNode;
+  iconClass?: string;
+}
+
+
+const AnimatedLink = ({ href, children, iconClass, className, ...props }: AnimatedLinkProps) => {
+  return (
+    <Link
+      href={href}
+      className={`group relative inline-flex items-center gap-2 text-sky-600 hover:text-sky-700 font-medium transition-colors duration-300 w-fit ${className || ''}`}
+      {...props}
+    >
+      {iconClass && <i className={`${iconClass} text-xl`}></i>}
+
+      <span className="relative">
+        {children}
+        <span className="absolute -bottom-0.5 left-0 h-0.5 w-0 bg-sky-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+      </span>
+    </Link>
+  );
+};
+
 
 export default function Login({
     status,
@@ -56,13 +83,13 @@ export default function Login({
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Contraseña</Label>
                                     {canResetPassword && (
-                                        <TextLink
-                                            href={request()}
+                                        <AnimatedLink
+                                            href={request()}   
                                             className="ml-auto text-sm"
                                             tabIndex={5}
                                         >
                                            ¿Olvidaste tu contraseña?
-                                        </TextLink>
+                                        </AnimatedLink>
                                     )}
                                 </div>
                                 <Input
@@ -101,9 +128,9 @@ export default function Login({
                         {canRegister && (
                             <div className="text-center text-sm text-muted-foreground">
                                 ¿No tienes una cuenta?{' '}
-                                <TextLink href={register()} tabIndex={5}>
+                                <AnimatedLink href={register()} tabIndex={5}>
                                     Aplica para cliente
-                                </TextLink>
+                                </AnimatedLink>
                             </div>
                         )}
                     </>

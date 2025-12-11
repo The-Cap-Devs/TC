@@ -32,28 +32,32 @@ import { cn, isSameUrl, resolveUrl } from '@/lib/utils';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem, type NavItem, type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-react';
-import AppLogo from './app-logo';
-import AppLogoIcon from './app-logo-icon';
+import { BookOpen, Folder, LayoutGrid, Menu, Search, ShoppingCart, Bolt } from 'lucide-react';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
+        title: 'Inicio',
         href: dashboard(),
         icon: LayoutGrid,
     },
+        {
+        title: 'Productos',
+        href: '/products',
+        icon: Bolt,
+    },
+        {
+        title: 'Cotizaciones',
+        href: '/quotations',
+        icon: Folder,
+    },
+
 ];
 
 const rightNavItems: NavItem[] = [
     {
-        title: 'Repository',
-        href: 'https://github.com/laravel/react-starter-kit',
-        icon: Folder,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#react',
-        icon: BookOpen,
+        title: 'Carrito de Compras',
+        href: '#',
+        icon: ShoppingCart,
     },
 ];
 
@@ -70,8 +74,18 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
     const getInitials = useInitials();
     return (
         <>
-            <div className="border-b border-sidebar-border/80">
-                <div className="mx-auto flex h-16 items-center px-4 md:max-w-7xl">
+        {/* header secundario para info de pagina */}
+        <div>
+            <div className="border-b border-sidebar-border/70 bg-sky-600 shadow-sm sticky top-0 z-40 lg:px-10">
+                <div className="mx-auto flex h-10 items-center px-4 ">
+                    <span className="text-sm text-neutral-600">
+                        {typeof page.props.title === 'string' ? page.props.title : 'No sé que poner en esta seccion aún, pero ya vendrá algo :)'}
+                    </span>     
+                </div>
+            </div> 
+        </div>
+            <div className="border-b border-sidebar-border-sky-700 bg-stone-50 shadow-sm sticky top-0 z-50">
+                <div className="mx-auto flex h-20 items-center lg:px-40">
                     {/* Mobile Menu */}
                     <div className="lg:hidden">
                         <Sheet>
@@ -86,14 +100,26 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                             </SheetTrigger>
                             <SheetContent
                                 side="left"
-                                className="flex h-full w-64 flex-col items-stretch justify-between bg-sidebar"
+                                className="flex h-full w-64 flex-col items-stretch justify-between bg-sky-600"
                             >
                                 <SheetTitle className="sr-only">
                                     Navigation Menu
                                 </SheetTitle>
+
                                 <SheetHeader className="flex justify-start text-left">
-                                    <AppLogoIcon className="h-6 w-6 fill-current text-black dark:text-white" />
+                                    <img
+                                        src="./img/logos/logo3.png"
+                                        alt="Tornillos El Capitán"
+                                        className="
+                                            h-14 sm:h-20 md:h-24
+                                            object-contain
+                                            aspect-[6/1]
+                                            transition-all
+                                            duration-300
+                                       "
+                                    />                                
                                 </SheetHeader>
+
                                 <div className="flex h-full flex-1 flex-col space-y-4 p-4">
                                     <div className="flex h-full flex-col justify-between text-sm">
                                         <div className="flex flex-col space-y-4">
@@ -143,56 +169,75 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                         href={dashboard()}
                         prefetch
                         className="flex items-center space-x-2"
-                    >
-                        <AppLogo />
+                        >
+                        <img
+                            src="./img/logos/logo3.png"
+                            alt="Tornillos El Capitán"
+                            className="
+                                h-14 sm:h-20 md:h-24
+                                object-contain
+                                aspect-[4/1]
+                                transition-all
+                                duration-300
+                           "
+                        />                       
                     </Link>
+
 
                     {/* Desktop Navigation */}
                     <div className="ml-6 hidden h-full items-center space-x-6 lg:flex">
                         <NavigationMenu className="flex h-full items-stretch">
                             <NavigationMenuList className="flex h-full items-stretch space-x-2">
-                                {mainNavItems.map((item, index) => (
-                                    <NavigationMenuItem
-                                        key={index}
-                                        className="relative flex h-full items-center"
-                                    >
-                                        <Link
-                                            href={item.href}
-                                            className={cn(
-                                                navigationMenuTriggerStyle(),
-                                                isSameUrl(
-                                                    page.url,
-                                                    item.href,
-                                                ) && activeItemStyles,
-                                                'h-9 cursor-pointer px-3',
-                                            )}
+                                {mainNavItems.map((item, index) => {
+                                    const isActive = isSameUrl(page.url, item.href);
+
+                                    return (
+                                        <NavigationMenuItem
+                                            key={index}
+                                            className="relative flex h-full items-center"
                                         >
-                                            {item.icon && (
-                                                <Icon
-                                                    iconNode={item.icon}
-                                                    className="mr-2 h-4 w-4"
+                                            <Link
+                                                href={item.href}
+                                                className={cn(
+                                                    "group/link relative flex h-full items-center px-3 text-sm font-medium transition-colors duration-300",
+                                                    isActive 
+                                                        ? "text-sky-600" 
+                                                        : "text-neutral-600 hover:text-sky-600"
+                                                )}
+                                            >
+                                                {item.icon && (
+                                                    <Icon
+                                                        iconNode={item.icon}
+                                                        className={cn(
+                                                            "mr-2 h-4 w-4 transition-colors duration-300",
+                                                            isActive 
+                                                                ? "text-sky-600" 
+                                                                : "text-neutral-400 group-hover/link:text-sky-600"
+                                                        )}
+                                                    />
+                                                )}
+                                                <span>{item.title}</span>
+
+                                                {/* LÍNEA ANIMADA */}
+                                                <span 
+                                                    className={cn(
+                                                        "absolute bottom-0 left-0 h-[2px] bg-sky-600 transition-all duration-300 ease-out",
+                                                        // LOGICA DE ANCHO:
+                                                        // Si está activo = 100% fijo
+                                                        // Si no = 0%, pero crece a 100% al hacer hover en "group/link"
+                                                        isActive ? "w-full" : "w-0 group-hover/link:w-full"
+                                                    )}
                                                 />
-                                            )}
-                                            {item.title}
-                                        </Link>
-                                        {isSameUrl(page.url, item.href) && (
-                                            <div className="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white"></div>
-                                        )}
-                                    </NavigationMenuItem>
-                                ))}
+                                            </Link>
+                                        </NavigationMenuItem>
+                                    );
+                                })}
                             </NavigationMenuList>
                         </NavigationMenu>
                     </div>
 
                     <div className="ml-auto flex items-center space-x-2">
                         <div className="relative flex items-center space-x-1">
-                            <Button
-                                variant="ghost"
-                                size="icon"
-                                className="group h-9 w-9 cursor-pointer"
-                            >
-                                <Search className="!size-5 opacity-80 group-hover:opacity-100" />
-                            </Button>
                             <div className="hidden lg:flex">
                                 {rightNavItems.map((item) => (
                                     <TooltipProvider
@@ -205,7 +250,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                                                     href={resolveUrl(item.href)}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="group ml-1 inline-flex h-9 w-9 items-center justify-center rounded-md bg-transparent p-0 text-sm font-medium text-accent-foreground ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                                    className="group ml-1 text-sky-600 inline-flex h-9 w-9 items-center justify-center rounded-md bg-transparent p-0 text-sm font-medium  ring-offset-background transition-colors hover:bg-accent hover:text-sky-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                                                 >
                                                     <span className="sr-only">
                                                         {item.title}
@@ -237,7 +282,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                                             src={auth.user.avatar}
                                             alt={auth.user.name}
                                         />
-                                        <AvatarFallback className="rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
+                                        <AvatarFallback className="rounded-lg bg-neutral-200 text-sky-600">
                                             {getInitials(auth.user.name)}
                                         </AvatarFallback>
                                     </Avatar>
