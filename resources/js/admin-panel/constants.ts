@@ -1,4 +1,4 @@
-import { Customer, Order, OrderStatus, Review, MonthlyRevenue, Product, Category } from '../js/types/types';
+import { Customer, Order, OrderStatus, Review, MonthlyRevenue, Product, Category } from './types';
 
 export const REVENUE_DATA: MonthlyRevenue[] = [
   { name: 'Abr', revenue: 2000 },

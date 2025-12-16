@@ -118,6 +118,7 @@ export default function QuotationsPage() {
 
   // CONTENIDO PRINCIPAL
   const renderContent = () => {
+    
     // 1. MODO EDICIÓN
     if (editingQuotation) {
       return (

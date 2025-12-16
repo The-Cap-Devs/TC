@@ -28,13 +28,6 @@ export default function Welcome({
         />
       </Head>
 
-      {/* --- Fondo animado global --- */}
-      {/* <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="bg"></div>
-        <div className="bg bg2"></div>
-        <div className="bg bg3"></div>
-      </div> */}
-
       {/* --- Contenido principal --- */}
         <div className="flex flex-col items-center bg-transparent text-[#1b1b18] lg:justify-center dark:bg-transparent">
             <WelcomeHeader canRegister={canRegister} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Order, OrderStatus } from '../../types/types';
+import { Order, OrderStatus } from '../types';
 import { ShoppingBag, Eye } from 'lucide-react';
 
 interface RecentOrdersProps {

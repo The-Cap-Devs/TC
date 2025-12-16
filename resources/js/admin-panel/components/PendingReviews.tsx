@@ -1,5 +1,5 @@
 import React from 'react';
-import { Review } from '../../types/types';
+import { Review } from '../types';
 import { MessageSquare, Star, Check, X } from 'lucide-react';
 
 interface PendingReviewsProps {
